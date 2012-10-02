@@ -4,7 +4,7 @@ import string
 import thread
 import time
 
-class ShadwIRC:
+class IRCLib:
  def __init__(self):
   self.onLine = eventhook.EventHook()
   self.onLine += self.hLine
@@ -17,7 +17,7 @@ class ShadwIRC:
   self.nick = nick
   self.s = socket.socket()
   self.s.connect((server, port))
-  self.s.send("USER shadwirc na na :Shadw's IRC Lib\n")
+  self.s.send("USER IRCLib na na :ShadwDrgn's IRCLib\n")
   self.s.send("NICK " + nick + "\n")
   data = ""
   self.th = thread.start_new_thread(self.readLoop, ())
@@ -75,13 +75,14 @@ class ShadwIRC:
  def sendMessage(self, t, m):
   self.s.send("PRIVMSG " + t + " :" + m + "\n")
 
-def testshit(o, d, c):
- snick = o.split("!")[0]
- bot.sendMessage(snick, c)
+#Example usage:
+#def testshit(o, d, c):
+# snick = o.split("!")[0]
+# bot.sendMessage(snick, c)
 
-bot = ShadwIRC()
-bot.connect("Shadw", "irc.esper.net", 6667)
-bot.onMessage += testshit
-while (bot.isConnected):
- continue
-print "pwnt"
+#bot = IRCLib()
+#bot.connect("IRCLib", "irc.esper.net", 6667)
+#bot.onMessage += testshit
+#while (bot.isConnected):
+# continue
+#print "pwnt"
